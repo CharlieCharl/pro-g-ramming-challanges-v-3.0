@@ -9,7 +9,7 @@ public class Main {
             public void run() {
                 JFrame frame = new MainFrame("Unit converter");
                 frame.setVisible(true);
-                frame.setSize(300,200);
+                frame.setSize(400,300);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setResizable(false);
             }

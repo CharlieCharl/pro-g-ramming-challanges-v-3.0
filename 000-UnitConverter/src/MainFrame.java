@@ -10,9 +10,31 @@ public class MainFrame extends JFrame {
 
         JButton button = new JButton("Convert");
         JTextArea value1 = new JTextArea();
-        JLabel labelMetric = new JLabel("centimeters");
+
+
+
+
         JLabel labelImperial = new JLabel("inches");
-        String[] options = {"metric to imperial", "imperial to metric" };
+        String[] options = {"Length", "Temperature", "Area", "Volume", "Weight", "Time" };
+        String[] metricLength = {"meter", "kilometer", "centimeter", "millimeter", "micrometer", "nanometer", "mile",
+                                "yard", "foot", "inch", "light year"};
+
+
+        JList<String> lengthUnitsFrom = new JList<String>(metricLength);
+        JList<String> lengthUnitsTo = new JList<String>(metricLength);
+        lengthUnitsFrom.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lengthUnitsFrom.setLayoutOrientation(JList.VERTICAL);
+        lengthUnitsFrom.setVisibleRowCount(4);
+
+        lengthUnitsTo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        lengthUnitsTo.setLayoutOrientation(JList.VERTICAL);
+        lengthUnitsTo.setVisibleRowCount(4);
+
+        JScrollPane listScrollerFrom =  new JScrollPane(lengthUnitsFrom);
+        JScrollPane listScrollerTo =  new JScrollPane(lengthUnitsTo);
+        //listScrollerFrom.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        //listScrollerFrom.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         JComboBox unitSystem = new JComboBox(options);
         Container c = getContentPane();
 
@@ -30,11 +52,11 @@ public class MainFrame extends JFrame {
 
         gbc.gridx = 1;
         gbc.gridy = 2;
-        c.add(labelMetric, gbc);
+        c.add(listScrollerFrom, gbc);
 
         gbc.gridx = 4;
         gbc.gridy = 2;
-        c.add(labelImperial, gbc);
+        c.add(listScrollerTo, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 3;
