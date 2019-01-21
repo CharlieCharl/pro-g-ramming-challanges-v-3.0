@@ -1,18 +1,27 @@
 import javax.lang.model.element.NestingKind;
 import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
 
     private JButton button;
     private JTextField inputData;
     private JLabel resultLabel;
+    private JList<String> lengthUnitsFrom;
+    private JList<String> lengthUnitsTo;
 
-    public MainFrame(String title){
-        super(title);
+
+    public MainFrame(){
+        this.setTitle("Unit converter");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
+        this.setSize(400,300);
 
         button = new JButton("Convert");
         inputData = new JTextField();
@@ -25,8 +34,8 @@ public class MainFrame extends JFrame {
         String[] temperatureUnits = {"celsius", "kelvin", "fahrenheit"};
 
 
-        JList<String> lengthUnitsFrom = new JList<String>(metricLength);
-        JList<String> lengthUnitsTo = new JList<String>(metricLength);
+        lengthUnitsFrom = new JList<String>(metricLength);
+        lengthUnitsTo = new JList<String>(metricLength);
 
         lengthUnitsFrom.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lengthUnitsFrom.setLayoutOrientation(JList.VERTICAL);
@@ -39,8 +48,7 @@ public class MainFrame extends JFrame {
 
         JScrollPane listScrollerFrom =  new JScrollPane(lengthUnitsFrom);
         JScrollPane listScrollerTo =  new JScrollPane(lengthUnitsTo);
-        //listScrollerFrom.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        //listScrollerFrom.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
 
         resultLabel.setText("test");
 
@@ -85,11 +93,31 @@ public class MainFrame extends JFrame {
         return Integer.parseInt(resultLabel.getText());
     }
 
-    public int intGetDataInput(){
+    public double getDataInput(){
         return Integer.parseInt(inputData.getText());
     }
 
-    public void setResultLabel(int result){
-        resultLabel.setText(Integer.toString(result));
+    public void setResultLabel(String value){
+        resultLabel.setText(value);
+    }
+
+    void addConvertButtonListener(ActionListener listenForConvertButton){
+        button.addActionListener(listenForConvertButton);
+    }
+
+    void addLengthUnitsFromListener(ListSelectionListener ListSelectionListenerFrom){
+        lengthUnitsFrom.addListSelectionListener(ListSelectionListenerFrom);
+    }
+
+    void addLengthUnitsToListener(ListSelectionListener ListSelectionListenerTo){
+        lengthUnitsTo.addListSelectionListener(ListSelectionListenerTo);
+    }
+
+    public JList<String> getLengthUnitsFrom() {
+        return lengthUnitsFrom;
+    }
+
+    public JList<String> getLengthUnitsTo() {
+        return lengthUnitsTo;
     }
 }

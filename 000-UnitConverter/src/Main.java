@@ -7,11 +7,10 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                JFrame frame = new MainFrame("Unit converter");
+                MainFrame frame = new MainFrame();
+                ConverterModel model = new ConverterModel();
+                MainFrameController controller = new MainFrameController(frame,model);
                 frame.setVisible(true);
-                frame.setSize(400,300);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setResizable(false);
             }
         });
 
