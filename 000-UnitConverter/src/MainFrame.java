@@ -1,30 +1,37 @@
+import javax.lang.model.element.NestingKind;
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
+
+    private JButton button;
+    private JTextField inputData;
+    private JLabel resultLabel;
+
     public MainFrame(String title){
         super(title);
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
 
-        JButton button = new JButton("Convert");
-        JTextArea value1 = new JTextArea();
+        button = new JButton("Convert");
+        inputData = new JTextField();
 
 
-
-
-        JLabel labelImperial = new JLabel("inches");
+        resultLabel = new JLabel();
         String[] options = {"Length", "Temperature", "Area", "Volume", "Weight", "Time" };
         String[] metricLength = {"meter", "kilometer", "centimeter", "millimeter", "micrometer", "nanometer", "mile",
                                 "yard", "foot", "inch", "light year"};
+        String[] temperatureUnits = {"celsius", "kelvin", "fahrenheit"};
 
 
         JList<String> lengthUnitsFrom = new JList<String>(metricLength);
         JList<String> lengthUnitsTo = new JList<String>(metricLength);
+
         lengthUnitsFrom.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lengthUnitsFrom.setLayoutOrientation(JList.VERTICAL);
         lengthUnitsFrom.setVisibleRowCount(4);
+
 
         lengthUnitsTo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lengthUnitsTo.setLayoutOrientation(JList.VERTICAL);
@@ -34,6 +41,8 @@ public class MainFrame extends JFrame {
         JScrollPane listScrollerTo =  new JScrollPane(lengthUnitsTo);
         //listScrollerFrom.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         //listScrollerFrom.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        resultLabel.setText("test");
 
         JComboBox unitSystem = new JComboBox(options);
         Container c = getContentPane();
@@ -48,7 +57,7 @@ public class MainFrame extends JFrame {
         gbc.gridy = 2;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        c.add(value1, gbc);
+        c.add(inputData, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -64,5 +73,23 @@ public class MainFrame extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         c.add(button, gbc);
 
+        gbc.gridx = 3;
+        gbc.gridy = 5;
+        gbc.gridwidth = 3;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        c.add(resultLabel, gbc);
+
+    }
+
+    public int getResult(){
+        return Integer.parseInt(resultLabel.getText());
+    }
+
+    public int intGetDataInput(){
+        return Integer.parseInt(inputData.getText());
+    }
+
+    public void setResultLabel(int result){
+        resultLabel.setText(Integer.toString(result));
     }
 }
