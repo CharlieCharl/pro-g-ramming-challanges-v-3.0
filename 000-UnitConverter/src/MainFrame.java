@@ -11,6 +11,7 @@ public class MainFrame extends JFrame {
     private JLabel resultLabel;
     private JList<String> lengthUnitsFrom;
     private JList<String> lengthUnitsTo;
+    private JComboBox unitSystem;
 
 
     public MainFrame(){
@@ -29,30 +30,30 @@ public class MainFrame extends JFrame {
 
         resultLabel = new JLabel();
         String[] options = {"Length", "Temperature", "Weight"};
-        String[] metricLength = {"meter", "kilometer", "centimeter", "millimeter", "micrometer", "nanometer", "mile",
-                                "yard", "foot", "inch", "light year"};
-        String[] temperatureUnits = {"celsius", "kelvin", "fahrenheit"};
+        String[] placeholder = {"select", "units"};
 
+        lengthUnitsFrom = new JList<String>(placeholder);
+        lengthUnitsTo = new JList<String>(placeholder);
 
-        lengthUnitsFrom = new JList<String>(metricLength);
-        lengthUnitsTo = new JList<String>(metricLength);
+        lengthUnitsFrom.setFixedCellWidth(100);
+        lengthUnitsTo.setFixedCellWidth(100);
 
         lengthUnitsFrom.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lengthUnitsFrom.setLayoutOrientation(JList.VERTICAL);
-        lengthUnitsFrom.setVisibleRowCount(4);
+        lengthUnitsFrom.setVisibleRowCount(5);
 
 
         lengthUnitsTo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         lengthUnitsTo.setLayoutOrientation(JList.VERTICAL);
-        lengthUnitsTo.setVisibleRowCount(4);
+        lengthUnitsTo.setVisibleRowCount(5);
 
         JScrollPane listScrollerFrom =  new JScrollPane(lengthUnitsFrom);
         JScrollPane listScrollerTo =  new JScrollPane(lengthUnitsTo);
 
+        listScrollerFrom.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        listScrollerTo.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        resultLabel.setText("test");
-
-        JComboBox unitSystem = new JComboBox(options);
+        unitSystem = new JComboBox(options);
         Container c = getContentPane();
 
         gbc.insets = new Insets(5,5,5,5);
@@ -103,6 +104,10 @@ public class MainFrame extends JFrame {
 
     void addConvertButtonListener(ActionListener listenForConvertButton){
         button.addActionListener(listenForConvertButton);
+    }
+
+    void addComboBoxListener(ActionListener unitsSelectComboBoxListener){
+        unitSystem.addActionListener(unitsSelectComboBoxListener);
     }
 
     void addLengthUnitsFromListener(ListSelectionListener ListSelectionListenerFrom){
