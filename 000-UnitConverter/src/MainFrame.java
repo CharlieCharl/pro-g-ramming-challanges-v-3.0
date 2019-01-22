@@ -28,7 +28,7 @@ public class MainFrame extends JFrame {
 
 
         resultLabel = new JLabel();
-        String[] options = {"Length", "Temperature", "Area", "Volume", "Weight", "Time" };
+        String[] options = {"Length", "Temperature", "Weight"};
         String[] metricLength = {"meter", "kilometer", "centimeter", "millimeter", "micrometer", "nanometer", "mile",
                                 "yard", "foot", "inch", "light year"};
         String[] temperatureUnits = {"celsius", "kelvin", "fahrenheit"};
