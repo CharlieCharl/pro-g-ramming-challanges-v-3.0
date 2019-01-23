@@ -5,7 +5,7 @@ public class ConverterModel {
     private int toIndex;
     private double result;
 
-    public double convertLegnht(){
+    public double convertLength(){
         if(fromIndex == 0 && toIndex == 0)
             return inputData;
         if(fromIndex == 0 && toIndex == 1)
@@ -260,6 +260,113 @@ public class ConverterModel {
             return inputData;
 
         return result;
+    }
+
+    public double convertTemperature(){
+        if(fromIndex == 0 && toIndex == 0)
+            return inputData;
+        if(fromIndex == 0 && toIndex == 1)
+            return inputData + 273.15;
+        if(fromIndex == 0 && toIndex == 2)
+            return (inputData * 9/5) + 32;
+
+        if(fromIndex == 1 && toIndex == 0)
+            return inputData - 273.15;
+        if(fromIndex == 1 && toIndex == 1)
+            return inputData;
+        if(fromIndex == 1 && toIndex == 2)
+            return (inputData * 9/5) - 459.67;
+
+        if(fromIndex == 2 && toIndex == 0)
+            return (inputData - 32) * 5/9;
+        if(fromIndex == 2 && toIndex == 1)
+            return (inputData + 459.67) * 5/9;
+        if(fromIndex == 2 && toIndex == 2)
+            return inputData;
+
+        return 0;
+    }
+
+    public double convertWeight(){
+        if(fromIndex == 0 && toIndex == 0)
+            return inputData;
+        if(fromIndex == 0 && toIndex == 1)
+            return inputData * 1000;
+        if(fromIndex == 0 && toIndex == 2)
+            return inputData * 1000000;
+        if(fromIndex == 0 && toIndex == 3)
+            return inputData * 2.20462262;
+        if(fromIndex == 0 && toIndex == 4)
+            return inputData * 35.2739619;
+        if(fromIndex == 0 && toIndex == 5)
+            return inputData * 5000 ;
+
+        if(fromIndex == 1 && toIndex == 0)
+            return inputData * 0.001;
+        if(fromIndex == 1 && toIndex == 1)
+            return inputData;
+        if(fromIndex == 1 && toIndex == 2)
+            return inputData * 1000;
+        if(fromIndex == 1 && toIndex == 3)
+            return inputData * 0.00220462262;
+        if(fromIndex == 1 && toIndex == 4)
+            return inputData * 0.0352739619;
+        if(fromIndex == 1 && toIndex == 5)
+            return inputData * 5 ;
+
+        if(fromIndex == 2 && toIndex == 0)
+            return inputData * Math.pow(10,-6);
+        if(fromIndex == 2 && toIndex == 1)
+            return inputData * 0.001;
+        if(fromIndex == 2 && toIndex == 2)
+            return inputData;
+        if(fromIndex == 2 && toIndex == 3)
+            return inputData * 2.20462262 * Math.pow(10,-6);
+        if(fromIndex == 2 && toIndex == 4)
+            return inputData * 3.52739619 * Math.pow(10,-5);
+        if(fromIndex == 2 && toIndex == 5)
+            return inputData * 0.005;
+
+        if(fromIndex == 3 && toIndex == 0)
+            return inputData * 0.45359237;
+        if(fromIndex == 3 && toIndex == 1)
+            return inputData * 453.59237;
+        if(fromIndex == 3 && toIndex == 2)
+            return inputData * 453592.37;
+        if(fromIndex == 3 && toIndex == 3)
+            return inputData;
+        if(fromIndex == 3 && toIndex == 4)
+            return inputData * 16;
+        if(fromIndex == 3 && toIndex == 5)
+            return inputData * 2267.96185;
+
+        if(fromIndex == 4 && toIndex == 0)
+            return inputData * 0.0283495231;
+        if(fromIndex == 4 && toIndex == 1)
+            return inputData * 28.3495231;
+        if(fromIndex == 4 && toIndex == 2)
+            return inputData * 28349.5231;
+        if(fromIndex == 4 && toIndex == 3)
+            return inputData * 0.0625;
+        if(fromIndex == 4 && toIndex == 4)
+            return inputData;
+        if(fromIndex == 4 && toIndex == 5)
+            return inputData * 141.747616;
+
+        if(fromIndex == 5 && toIndex == 0)
+            return inputData * 0.0002;
+        if(fromIndex == 5 && toIndex == 1)
+            return inputData * 0.2;
+        if(fromIndex == 5 && toIndex == 2)
+            return inputData * 200 ;
+        if(fromIndex == 5 && toIndex == 3)
+            return inputData * 0.000440924524;
+        if(fromIndex == 5 && toIndex == 4)
+            return inputData * 0.00705479239;
+        if(fromIndex == 5 && toIndex == 5)
+            return inputData;
+
+        return 0;
     }
 
 

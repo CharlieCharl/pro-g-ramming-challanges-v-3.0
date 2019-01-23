@@ -12,6 +12,7 @@ public class MainFrameController {
     private String[] lengthUnits = {"meter", "kilometer", "centimeter", "millimeter", "micrometer", "nanometer", "mile",
             "yard", "foot", "inch", "light year"};
     private String[] weightUnits = {"kilogram", "gram", "milligram", "pound", "ounce", "carrat"};
+    private String category;
 
 
     MainFrameController(MainFrame mainFrame, ConverterModel model){
@@ -30,7 +31,21 @@ public class MainFrameController {
             model.setFromIndex(mainFrame.getLengthUnitsFrom().getSelectedIndex());
             model.setToIndex(mainFrame.getLengthUnitsTo().getSelectedIndex());
             model.setInputData(mainFrame.getDataInput());
-            String value = String.valueOf(model.convertLegnht());
+
+            String value = "";
+
+            switch (category){
+                case "Length":
+                    value = String.valueOf(model.convertLength());
+                    break;
+                case "Temperature":
+                    value = String.valueOf(model.convertTemperature());
+                    break;
+                case "Weight":
+                    value = String.valueOf(model.convertWeight());
+                    break;
+            }
+
             mainFrame.setResultLabel(value);
         }
     }
@@ -58,7 +73,7 @@ public class MainFrameController {
         @Override
         public void actionPerformed(ActionEvent e) {
             JComboBox cb = (JComboBox) e.getSource();
-            String category = (String) cb.getSelectedItem();
+            category = (String) cb.getSelectedItem();
 
            switch (category){
                case "Length":
