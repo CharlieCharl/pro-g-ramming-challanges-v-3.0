@@ -3,7 +3,6 @@ public class ConverterModel {
     private double inputData;
     private int fromIndex;
     private int toIndex;
-    private double result;
 
     public double convertLength(){
         if(fromIndex == 0 && toIndex == 0)
@@ -259,7 +258,7 @@ public class ConverterModel {
         if(fromIndex == 10 && toIndex == 10)
             return inputData;
 
-        return result;
+        return inputData;
     }
 
     public double convertTemperature(){
@@ -284,7 +283,7 @@ public class ConverterModel {
         if(fromIndex == 2 && toIndex == 2)
             return inputData;
 
-        return 0;
+        return inputData;
     }
 
     public double convertWeight(){
@@ -366,20 +365,7 @@ public class ConverterModel {
         if(fromIndex == 5 && toIndex == 5)
             return inputData;
 
-        return 0;
-    }
-
-
-    public double getInputData() {
         return inputData;
-    }
-
-    public int getFromIndex() {
-        return fromIndex;
-    }
-
-    public int getToIndex() {
-        return toIndex;
     }
 
     public void setInputData(double inputData) {
