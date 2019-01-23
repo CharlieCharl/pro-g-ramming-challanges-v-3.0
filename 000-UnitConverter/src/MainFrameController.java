@@ -28,24 +28,35 @@ public class MainFrameController {
     class ConvertButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            try {
+                model.setInputData(mainFrame.getDataInput());
+            }catch (NumberFormatException ex){
+                mainFrame.displayErrorMessage("You must enter integer or double value");
+            }catch (NullPointerException ex){
+                mainFrame.displayErrorMessage("You must enter data");
+            }
+
             model.setFromIndex(mainFrame.getLengthUnitsFrom().getSelectedIndex());
             model.setToIndex(mainFrame.getLengthUnitsTo().getSelectedIndex());
-            model.setInputData(mainFrame.getDataInput());
 
             String value = "";
 
-            switch (category){
-                case "Length":
-                    value = String.valueOf(model.convertLength());
-                    break;
-                case "Temperature":
-                    value = String.valueOf(model.convertTemperature());
-                    break;
-                case "Weight":
-                    value = String.valueOf(model.convertWeight());
-                    break;
+          try {
+                switch (category){
+                    case "Length":
+                        value = String.valueOf(model.convertLength());
+                        break;
+                    case "Temperature":
+                        value = String.valueOf(model.convertTemperature());
+                        break;
+                    case "Weight":
+                        value = String.valueOf(model.convertWeight());
+                        break;
+                }
+            }catch (NullPointerException ex){
+                mainFrame.displayErrorMessage("You must select units");
             }
-
             mainFrame.setResultLabel(value);
         }
     }

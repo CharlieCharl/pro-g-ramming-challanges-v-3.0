@@ -90,6 +90,10 @@ public class MainFrame extends JFrame {
 
     }
 
+    public void displayErrorMessage(String errorMessage){
+        JOptionPane.showMessageDialog(this,errorMessage);
+    }
+
     public int getResult(){
         return Integer.parseInt(resultLabel.getText());
     }
