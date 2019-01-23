@@ -11,7 +11,7 @@ public class MainFrameController {
     private String[] temperatureUnits = {"celsius", "kelvin", "fahrenheit"};
     private String[] lengthUnits = {"meter", "kilometer", "centimeter", "millimeter", "micrometer", "nanometer", "mile",
             "yard", "foot", "inch", "light year"};
-    private String[] weightUnits = {"kilogram", "gram", "milligram", "pound", "ounce", "carrat"};
+    private String[] weightUnits = {"kilogram", "gram", "milligram", "pound", "ounce", "carat"};
     private String category;
 
 
