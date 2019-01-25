@@ -100,7 +100,6 @@ public class MainFrameController {
                    mainFrame.getLengthUnitsTo().setListData(weightUnits);
                    break;
            }
-
         }
     }
 }
