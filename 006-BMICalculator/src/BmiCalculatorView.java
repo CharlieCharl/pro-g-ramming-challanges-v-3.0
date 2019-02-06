@@ -10,15 +10,17 @@ public class BmiCalculatorView extends JFrame {
     JLabel weightLabel;
     JTextField heightTextField;
     JTextField weightTextField;
+    JButton calculateButton;
+    JLabel result;
 
     public BmiCalculatorView(){
         this.setTitle("BMI calculator");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
-        GridLayout layout = new GridLayout(4,2);
+        GridLayout layout = new GridLayout(4,1);
         setLayout(layout);
-        this.setSize(400,300);
+        this.setSize(300,150);
 
         menButton = new JRadioButton("Men");
         womanButton = new JRadioButton("Woman");
@@ -29,6 +31,8 @@ public class BmiCalculatorView extends JFrame {
         heightTextField = new JTextField();
         weightTextField = new JTextField();
 
+        calculateButton = new JButton("Calculate");
+        result = new JLabel("0");
         Container c = getContentPane();
 
         c.add(menButton);
@@ -37,6 +41,8 @@ public class BmiCalculatorView extends JFrame {
         c.add(heightTextField);
         c.add(weightLabel);
         c.add(weightTextField);
+        c.add(calculateButton);
+        c.add(result);
 
         genderGroup = new ButtonGroup();
         genderGroup.add(menButton);
